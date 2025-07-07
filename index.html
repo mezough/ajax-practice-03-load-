@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Localhost-03</title>
+</head>
+
+<body>
+    <h1>This is in main page</h1>
+    <!-- <dive id="show-01"></dive>
+    <dive id="show-02"></dive> -->
+
+    <button data-page="demo-one.html">Get Demo one</button>
+    <button data-page="demo-two.html">Get Demo two</button>
+    <div id="show"></div>
+    <h2 id="error"></h2>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+
+        // to load simple pages or part of a page
+        // ---------------------------------------------
+
+        // $(function () {
+        //     $("#show-01").load("demo-one.html .content-01");
+        //     $("#show-02").load("demo-one.html .content-02");
+        // })
+
+
+        // Using Call back Function to show error
+        // --------------------------------------------
+
+        // $(function () {
+        //     $("#show-01").load("demo-ones.html .content-01", function (response, status, xhr) {
+        //         if (status == 'success') {
+        //             console.log("Load was performed.");
+        //         } else if (status == "error") {
+        //             var msg = "Sorry but there was an error: ";
+        //             $("#error").html(msg + "<b>" + xhr.status + "</b>" + " " + xhr.statusText);
+        //         }
+        //     });
+        // })
+
+
+        // to load other pages with button
+        // ------------------------------------
+
+        $(function () {
+            $("button").on('click', function () {
+
+                $("#show").load($(this).data('page') + ' .content', function (response, status, xhr) {
+                    if (status == 'success') {
+                        console.log("Load was performed.");
+                    } else if (status == "error") {
+                        var msg = "Sorry but there was an error: ";
+                        $("#error").html(msg + "<b>" + xhr.status + "</b>" + " " + xhr.statusText);
+                    }
+                });
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>
